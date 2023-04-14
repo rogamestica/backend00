@@ -5,23 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CarouselItems extends Model
+class messages extends Model
 {
     use HasFactory;
-
-      /**
+     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'carousel_items';
+    protected $table = 'messages';
 
      /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'carousel_item_id';
+    protected $primaryKey = 'message_id';
 
     /**
      * The attributes that are mass assignable.
@@ -29,11 +28,7 @@ class CarouselItems extends Model
      * @var array
      */
     protected $fillable = [
-        'carousel_name',
-        'image_path',
-        'description',
-        'user_id'
+        'message',
+        'sender'
     ];
-
-    
 }
