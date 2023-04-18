@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CarouselItemsController;
+use App\Http\Controllers\Api\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
@@ -35,3 +36,8 @@ Route::put('/user/{id}', [UserController::class, 'email'])->name('user.email'); 
 Route::put('/user/{id}', [UserController::class, 'password'])->name('user.password'); //ing ani ako pero mugana
 //Route::put('/user/password/{id}', [UserController::class, 'password'])->name('user.password'); //kang sir pero mugana gihapon
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+
+Route::get('/messages', [MessageController::class, 'index']);
+Route::post('/messages', [MessageController::class, 'store']);
+Route::put('/messages/{id}', [MessageController::class, 'update']);
