@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\CarouselItemsController;
+use App\Http\Controllers\Api\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout',  [AuthController::class,  'logout']);
 
+    //Admin APIs
     Route::controller(CarouselItemsController::class)->group(function () {
         Route::get('/carousel',             'index');
         Route::get('/carousel/{id}',        'show');
@@ -41,7 +43,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/carousel/{id}',        'update');
         Route::delete('/carousel/{id}',     'destroy');
     });
-
      Route::controller(UserController::class)->group(function () {
         Route::get('/user',              'index');
         Route::get('/user/{id}',         'show');
@@ -50,9 +51,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
         //Route::put('/user/email/{id}', 'email')->name('user.email'); //kang sir pero mugana gihapon
         Route::put('/user/{id}',         'password')->name('user.password'); //ing ani ako pero mugana
         //Route::put('/user/password/{id}', 'password')->name('user.password'); //kang sir pero mugana gihapon
+        Route::put('/user/image/{id}',    'image')->name('user.image');
         Route::delete('/user/{id}',      'destroy');
     });
-   
+    //User Specific APIs
+    Route::get('/profile/show', [ProfileController::class, 'show']);
+    Route::put('/profile/image', [ProfileController::class, 'image'])->name('profile.image');
 
 });
 
